@@ -9,6 +9,28 @@
     <link rel="stylesheet" href="./src/styles.css">
   </head>
   <body>
+    <div id="coi-status"
+     style="position:fixed;top:10px;right:10px;z-index:99999;
+            background:#111;color:#fff;padding:10px;border-radius:8px;
+            font-family:monospace;">
+  Checking isolation...
+</div>
+
+<script>
+  const el = document.getElementById("coi-status");
+
+  function updateStatus() {
+    el.textContent =
+      "Cross-origin isolated: " +
+      (window.crossOriginIsolated ? "YES ✅" : "NO ❌") +
+      " | SharedArrayBuffer: " +
+      (typeof SharedArrayBuffer !== "undefined" ? "YES ✅" : "NO ❌");
+  }
+
+  updateStatus();
+  setTimeout(updateStatus, 1000);
+  setTimeout(updateStatus, 3000);
+</script>
     <div class="app-shell">
       <header class="topbar">
         <div class="brand">
